@@ -1,0 +1,24 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6 title-section">
+            <h2 class="heading">News</h2>
+        </div>
+    </div>
+    <div class="row">
+        {% for i in news %}
+            <div class="col-lg-6">
+                <div class="custom-media d-flex">
+                    <div class="img mr-4">
+                        <img src="{{ i.image.url }}" alt="Image" class="img-fluid">
+                    </div>
+                    <div class="text">
+                        <span class="meta">{{ i.date }}</span>
+                        <h3 class="mb-4"><a href="#">{{ i.title }}</a></h3>
+                        <p>{{ i.summary|truncatechars:100 }}</p>
+                        <p><a href="{% url 'DetailPage' i.pk %}">Read more</a></p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

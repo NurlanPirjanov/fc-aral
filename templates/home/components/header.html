@@ -1,0 +1,57 @@
+{% load i18n %}
+{% load static %}
+
+<header class="site-navbar header-new py-1" role="banner">
+    <div class="container">
+        <div class="d-flex align-items-center">
+            <div class="site-logo">
+                <a href="{% url "HomePage" %}">
+                    <img src="{{ logo_url }}" height="70" alt="{{ site_name }}">
+                    <img src="{{ logo_url2 }}" height="40" alt="{{ site_name }}">
+                </a>
+            </div>
+            <div class="ml-auto">
+                <nav class="site-navigation position-relative text-right" role="navigation">
+                    <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+                        <li class="{% if request.resolver_match.view_name == 'HomePage' %}active{% endif %}"><a href="{% url "HomePage" %}" class="nav-link link">{% trans "Home" %}</a></li>
+                        <li class="{% if request.resolver_match.view_name == 'MatchPage' %}active{% endif %}"><a href="{% url "MatchPage" %}" class="nav-link link">{% trans "Matches" %}</a></li>
+                        <li class="{% if request.resolver_match.view_name == 'NewsPage' %}active{% endif %}"><a href="{% url "NewsPage" %}" class="nav-link">{% trans "News" %}</a></li>
+                        <li class="{% if request.resolver_match.view_name == 'ContactPage' %}active{% endif %}"><a href="{% url "ContactPage" %}" class="nav-link">{% trans "Contact" %}</a></li>
+                        <li>
+                            <div class="dropdown" data-dropdown>
+                                <button class="link" data-dropdown-buttom>Klub</button>
+                                <div class="dropdown-menu information-grid">
+                                    <div>
+                                        <div class="dropdown-links">
+                                            <a href="{% url "PlayersPage" %}" class="link">{% trans "Players" %}</a>
+                                            <a href="#" class="link">Rahbariyat</a>
+                                            <a href="#" class="link">Trenerler</a>
+                                            <a href="#" class="link">U-19</a>
+                                            <a href="#" class="link">Klub tariyxı</a>
+                                            <a href="#" class="link">Stadion</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="dropdown" data-dropdown>
+                                <button class="link button-lang" data-dropdown-buttom></button>
+                                <div class="dropdown-menu information-grid">
+                                    <div>
+                                        <div class="dropdown-links">
+                                            <a href="/next/?lang=kk&url={{ request.path }}" class="link dropdown-item"><img src="/static/images/Flag_of_Karakalpakstan.png" height="15"> Qaraqalpaqsha</a>
+                                            <a href="/next/?lang=uz&url={{ request.path }}" class="link dropdown-item"><img src="/static/images/Flag_of_Uzbekistan.png" height="15"> O'zbekcha</a>
+                                            <a href="/next/?lang=en&url={{ request.path }}" class="link dropdown-item"><img src="/static/images/Flag_of_the_United_Kingdom_(1-2).svg" height="15"> English</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+                <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right text-white"><span class="icon-menu h3 text-white"></span></a>
+            </div>
+        </div>
+    </div>
+</header>

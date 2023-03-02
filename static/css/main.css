@@ -1,0 +1,419 @@
+::-webkit-scrollbar {
+    display: none;
+}
+body {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+a:hover {
+    cursor: url("https://cdn.custom-cursor.com/db/pointer/32/Goalkeeper_Glove_Pointer.png"), auto;
+}
+.btn:hover {
+    cursor: url("https://cdn.custom-cursor.com/db/pointer/32/Goalkeeper_Glove_Pointer.png"), auto;
+}
+
+.listing,.player-list,.player-list__item {
+    margin: 0;
+    padding: 0
+}
+
+.listing {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px;
+    justify-content: center;
+    list-style: none
+}
+
+@media(min-width: 768px) {
+    .listing:after {
+        content:""
+    }
+}
+
+@media(min-width: 1176px) {
+    .listing {
+        gap:5px;
+        justify-content: unset
+    }
+}
+
+.listing:after,.listing__item {
+    flex: 0 0 auto;
+    width: 100%
+}
+
+@media(min-width: 768px) {
+    .listing:after,.listing__item {
+        width:49%
+    }
+}
+
+@media(min-width: 1176px) {
+    .listing:after,.listing__item {
+        max-width:445px;
+        width: 33%
+    }
+}
+
+.listing__title {
+    color: #fff;
+    font-family: Chelsea Basis,sans-serif;
+    font-size: 28px;
+    font-size: 1.75rem;
+    font-weight: 700;
+    line-height: 1.4285714286;
+    margin-left: 32px;
+    margin-right: 32px;
+    max-width: 1276px
+}
+
+@media(min-width: 768px) {
+    .listing__title {
+        margin-left:60px;
+        margin-right: 60px
+    }
+}
+
+@media(min-width: 1176px) {
+    .listing__title {
+        margin-left:82px;
+        margin-right: 82px
+    }
+}
+
+@media(min-width: 1440px) {
+    .listing__title {
+        margin-left:calc(50vw - 638px);
+        margin-right: calc(50vw - 638px)
+    }
+}
+
+@media(min-width: 1176px) {
+    .listing__title {
+        font-size:36px;
+        font-size: 2.25rem;
+        line-height: 1.2222222222
+    }
+}
+
+.player-card {
+    background-color: #fff;
+    height: 180px;
+    overflow: hidden;
+    padding: 0 32px;
+    position: relative;
+    transition: all .3s ease;
+    width: 100%
+}
+
+@media(min-width: 1176px) {
+    .player-card {
+        height:445px;
+        max-width: 445px;
+        width: auto
+    }
+}
+
+.player-card:hover {
+    border-radius: 5%;
+    transition: all .3s ease
+}
+
+
+.player-card:hover .player-card__number {
+    color: #0009db
+}
+
+.player-card__number {
+    color: #ebe6df;
+    font-family: Chelsea Basis Chiselled,sans-serif;
+    font-size: 60px;
+    font-size: 3.75rem;
+    line-height: 1;
+    padding-top: 15px;
+    transition: all .3s ease
+}
+
+@media(min-width: 1176px) {
+    .player-card__number {
+        font-size:120px;
+        font-size: 7.5rem;
+        line-height: 1
+    }
+}
+
+.player-card__details {
+    bottom: 15px;
+    left: 32px;
+    position: absolute;
+    z-index: 99990
+}
+
+@media(min-width: 1176px) {
+    .player-card__details {
+        bottom:45px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px
+    }
+}
+
+.player-card__first-name,.player-card__position-detailed,.player-card__position-general {
+    color: #001489;
+    font-family: Chelsea Basis Regular,sans-serif;
+    font-size: 13px;
+    font-size: .8125rem;
+    line-height: 1.2307692308
+}
+
+@media(min-width: 1176px) {
+    .player-card__first-name,.player-card__position-detailed,.player-card__position-general {
+        font-size:16px;
+        font-size: 1rem;
+        line-height: 1.1875
+    }
+}
+
+.player-card__known-as,.player-card__last-name {
+    color: #001489;
+    font-family: Chelsea Basis,sans-serif;
+    font-size: 22px;
+    font-size: 1.375rem;
+    font-weight: 500;
+    line-height: 1.1818181818;
+    text-transform: uppercase
+}
+
+@media(min-width: 1176px) {
+    .player-card__known-as,.player-card__last-name {
+        font-size:32px;
+        font-size: 2rem;
+        line-height: 1.1875
+    }
+}
+
+.player-card__link {
+    height: 100%;
+    inset: 0;
+    position: absolute;
+    width: 100%;
+    z-index: 99990
+}
+
+.player-card__link span {
+    display: none
+}
+
+.player-card__image {
+    bottom: 0;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    right: 32px;
+    z-index: 10
+}
+
+.player-card__image .responsive-image,.player-card__image img {
+    height: 100%
+}
+
+@media(min-width: 1176px) {
+    .player-card__image {
+        height:85%;
+        right: -25%
+    }
+}
+.img-card {
+    width: 100%;
+    object-fit: cover;
+    max-height: max(10rem, 30vh);
+    aspect-ratio: 4/3;
+}
+
+.link:hover {
+    color: yellow;
+}
+
+#loading {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 9999;
+}
+
+#loading img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.header-container {
+    flex-direction: column;
+    min-width: 100vh;
+    display: flex;
+}
+
+.header-new {
+    top: 0;
+    left: 0;
+    right: 0;
+    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: baseline;
+    padding: 1.5rem;
+    gap: 1rem;
+    position: fixed;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);
+}
+
+
+/*link header*/
+.link {
+    background: none;
+    border: none;
+    font-size: 12px;
+    text-decoration: none;
+    font-family: inherit;
+    font-size: large;
+    cursor: pointer;
+    padding: 0;
+}
+
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + .25rem);
+    left: 0;
+    background-color: white;
+    padding: .75rem;
+    border-radius: .25rem;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .1);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-10px);
+    transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+}
+
+.dropdown.active > .link + .dropdown-menu {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.information-grid {
+    display: grid;
+}
+
+.dropdown-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+
+.site-mobile-menu .site-nav-wrap button {
+    padding: 10px 20px;
+    display: block;
+    position: relative;
+    color: #212529;
+}
+
+.button-lang {
+    background-image: url("/static/images/translate.png");
+    background-color: transparent; /* make the button transparent */
+    background-repeat: no-repeat;  /* make the background image appear only once */
+    background-position: center;  /* equivalent to 'top left' */
+    border: none;           /* assuming we don't want any borders */
+    cursor: pointer;        /* make the cursor like hovering over an <a> element */
+    height: 16px;           /* make this the size of your image */
+    padding-left: 16px;     /* make text start to the right of the image */
+    vertical-align: middle;
+}
+.button-lang:active {
+    border: none;
+}
+
+
+.socialbtn > nav{
+    position: fixed;
+    width: 70px;
+    margin-top: 150px;
+    transition: all 0.3s linear;
+    box-shadow: 2px 2px 8px 0px rgba(0,0,0,.4);
+}
+.socialbtn > nav li{
+    height: 60px;
+    position:relative;
+}
+.socialbtn > nav li a{
+    color: white;
+    display: block;
+    height: 100%;
+    width: 100%;
+    line-height: 60px;
+    padding-left:25%;
+    border-bottom: 1px solid rgba(0,0,0,.4);
+    transition: all .3s linear;
+}
+.socialbtn > nav li:nth-child(1) a{
+    background: #4267B2;
+}
+.socialbtn > nav li:nth-child(2) a{
+    background: #1DA1F2;
+}
+.socialbtn > nav li:nth-child(3) a{
+    background: #E1306C;
+}
+.socialbtn > nav li:nth-child(4) a{
+    background: #2867B2;
+}
+.socialbtn > nav li:nth-child(5) a{
+    background: #333;
+}
+.socialbtn > nav li:nth-child(6) a{
+    background: #ff0000;
+}
+.socialbtn > nav li a i{
+    position:absolute;
+    top: 17px;
+    left: 20px;
+    font-size: 27px;
+}
+.socialbtn > ul li a span{
+    display: none;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.socialbtn > a:hover {
+    z-index:1;
+    width: 200px;
+    border-bottom: 1px solid rgba(0,0,0,.5);
+    box-shadow: 0 0 1px 1px rgba(0,0,0,.3);
+}
+.socialbtn > ul li:hover a span{
+    padding-left: 30%;
+    display: block;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+}

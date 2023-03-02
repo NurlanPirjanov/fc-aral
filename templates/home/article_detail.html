@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block title %}{{ article.title }} | Aral PFC{% endblock title %}
+{% block content %}
+    <div class="hero overlay" style="background-image: url('{{ article.image.url }}');">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-9 mx-auto text-center">
+                    <h1 class="text-white">{{ article.title }}</h1>
+                    <p><span>{{ article.date }}</span> <span class="mx-3">&bullet;</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="site-section first-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 blog-content">
+                {% if article.image2 %}
+                    <div><img class="img-fluid" src="{{ article.image2.url }}" alt="{{ article.title }}"></div>
+                {% endif %}
+                    <p class="lead">
+                        {{ article.body }}
+                    </p>
+                    <div class="pt-5">
+                        <h3 class="mb-5 text-white">{{ article.comments.all.count }} Comments</h3>
+                        <ul class="comment-list">
+                            {% for comment in article.comments.all %}
+                            <li class="comment">
+                                <div class="vcard bio">
+                                    <img src="{% static 'images/ft.png' %}" alt="Image placeholder">
+                                </div>
+                                <div class="comment-body">
+                                    <h3>{{ comment.full_name }} <span class="h6">{{ comment.created_date }}</span></h3>
+                                    <p>{{ comment.massage }}</p>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="pt-5">
+                        <div class="comment-form-wrap p-3 bg-light">
+                            <h3 class="mb-5">Leave a comment</h3>
+                            <form method="post" action="{% url 'add_comment' article.pk %}">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                <button type="submit" class="btn btn-outline-secondary">Add Comment</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 sidebar">
+                    <div class="sidebar-box">
+                        <img src="{{ random_article.image.url }}" alt="Image placeholder" class="img-fluid mb-4">
+                        <h3 class="text-uppercase">{{ random_article.title }}</h3>
+                        <p>{{ random_article.body|truncatechars:150 }}</p>
+                        <p><a href="{% url 'DetailPage' random_article.pk %}" class="btn btn-outline-secondary text-white">Read More</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

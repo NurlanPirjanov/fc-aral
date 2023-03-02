@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Contact | Aral PFC{% endblock title %}
+{% block content %}
+    {% if contact.image %}
+        <div class="hero overlay" style="background-image: url('{{ contact.image.url }}');">
+    {% else %}
+        <div class="hero overlay" style="background-image: url('/static/images/bg_1.jpg');">
+    {% endif %}
+<div class="container">
+    <div class="row align-items-center">
+        <div class="col-lg-9 mx-auto text-center">
+            <h1 class="text-white">Contact</h1>
+        </div>
+    </div>
+</div>
+</div>
+<div class="site-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                {{ contact.location|safe }}
+            </div>
+            <div class="col-lg-4 ml-auto">
+
+                <ul class="list-unstyled">
+                    <li class="mb-2">
+                        <strong class="text-white d-block">Address</strong>
+                        {{ contact.address }}
+                    </li>
+                    <li class="mb-2">
+                        <strong class="text-white d-block">Email</strong>
+                        <a href="mailto:{{ contact.email }}">{{ contact.email }}</a>
+                    </li>
+                    <li class="mb-2">
+                        <strong class="text-white d-block">
+                            Phone
+                        </strong>
+                        <a href="tel:{{ contact.phone_number }}">{{ contact.phone_number }}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
