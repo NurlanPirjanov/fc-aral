@@ -10,8 +10,8 @@ from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
 from .forms import CommentForm
 from django.shortcuts import redirect
-
-
+from django.views.generic import TemplateView
+from hitcount.views import HitCountDetailView
 def home(request):
     next_match = NextMatch.objects.last()
     news = News.objects.order_by('-id')[:3]
@@ -47,18 +47,30 @@ def LangView(request):
     full_url = f'/{lang_url}/{next_url}'
     return redirect(full_url)
 
+def LigaDetailView(request, pk):
+    liga = get_object_or_404(Liga, pk=pk)
+    news = News.objects.order_by('-id')[:2]
+    context = {
+        'news': news,
+        'liga': liga,
+    }
+    return TemplateResponse(request, "home/liga_detail.html", context)
 
-def DetailView(request, pk):
-    articles = News.objects.all()
-    random_article = random.choice(articles)
-    article = get_object_or_404(News, pk=pk)
-    form = CommentForm()
-    context = {'article': article,
-               'random_article':random_article,
-               'form': form,
-               }
-    return render(request, 'home/article_detail.html', context)
 
+class DetailView(HitCountDetailView):
+    model = News
+    template_name = 'home/article_detail.html'
+    count_hit = True
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        articles = News.objects.all()
+        random_article = random.choice(articles)
+        article = get_object_or_404(News, pk=self.kwargs.get('pk'))
+        form = CommentForm()
+
+        context['article'] = article
+        context['random_article'] = random_article
+        return context
 
 def add_comment(request, pk):
     news = News.objects.get(pk=pk)

@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load hitcount_tags %}
 {% load static %}
 {% block title %}{{ article.title }} | Aral PFC{% endblock title %}
 {% block content %}
@@ -8,7 +9,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-9 mx-auto text-center">
                     <h1 class="text-white">{{ article.title }}</h1>
-                    <p><span>{{ article.date }}</span> <span class="mx-3">&bullet;</span></p>
+                    <p><span>{{ article.date }}</span><span class="mx-3">&bullet; {% get_hit_count for article %} <i class="fa fa-eye" aria-hidden="true"></i></span></p>
                 </div>
             </div>
         </div>
@@ -21,7 +22,7 @@
                     <div><img class="img-fluid" src="{{ article.image2.url }}" alt="{{ article.title }}"></div>
                 {% endif %}
                     <p class="lead">
-                        {{ article.body }}
+                        {{ article.body|safe }}
                     </p>
                     <div class="pt-5">
                         <h3 class="mb-5 text-white">{{ article.comments.all.count }} Comments</h3>
@@ -54,7 +55,7 @@
                     <div class="sidebar-box">
                         <img src="{{ random_article.image.url }}" alt="Image placeholder" class="img-fluid mb-4">
                         <h3 class="text-uppercase">{{ random_article.title }}</h3>
-                        <p>{{ random_article.body|truncatechars:150 }}</p>
+                        <p>{{ random_article.summary|truncatechars:150 }}</p>
                         <p><a href="{% url 'DetailPage' random_article.pk %}" class="btn btn-outline-secondary text-white">Read More</a></p>
                     </div>
                 </div>
