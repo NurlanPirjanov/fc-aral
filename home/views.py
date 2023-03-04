@@ -14,21 +14,70 @@ from django.views.generic import TemplateView
 from hitcount.views import HitCountDetailView
 def home(request):
     next_match = NextMatch.objects.last()
-    news = News.objects.order_by('-id')[:3]
     liga = Liga.objects.latest('id')
     gallery = Gallery.objects.order_by('-id')[:6]
+    news3 = News.objects.order_by('-id')[:3]
     context = {
         'next_match': next_match,
-        'news': news,
         'liga': liga,
         'gallery':gallery,
+        'news3':news3,
     }
     return TemplateResponse(request, "home/index.html", context)
 
 
+def RahbariyatView(request):
+    rahb = Rahbariyat.objects.all()
+    context = {
+        'rahb':rahb,
+    }
+    return TemplateResponse(request, "home/rahbariyat.html", context)
+
+
+def TrenerView(request):
+    trener = Trener.objects.all()
+    context = {
+        'trener':trener,
+    }
+    return TemplateResponse(request, "home/trener.html", context)
+
+
+def U19View(request):
+    object = U19.objects.first()
+    context = {
+        'object':object,
+    }
+    return TemplateResponse(request, "home/other_page.html", context)
+
+def historyView(request):
+    object = ClubHistory.objects.first()
+    context = {
+        'object':object,
+    }
+    return TemplateResponse(request, "home/other_page.html", context)
+
+def stadionView(request):
+    object = Stadion.objects.first()
+    context = {
+        'object':object,
+    }
+    return TemplateResponse(request, "home/other_page.html", context)
+
+def mediatekaPage(request):
+    object = Gallery.objects.all()
+    items_per_page = 18
+    paginator = Paginator(object, items_per_page)
+    page_number = request.GET.get('page')
+    news_obj = paginator.get_page(page_number)
+    context = {
+        'object':object,
+        'news_obj': news_obj,
+    }
+    return TemplateResponse(request, "home/media.html", context)
+
+
 def MatchView(request):
     next_match = NextMatch.objects.last()
-    news = News.objects.order_by('-id')[:2]
     old_matches = OldMatch.objects.all()
     paginator = Paginator(old_matches, 9)
     page_number = request.GET.get('page')
@@ -36,9 +85,9 @@ def MatchView(request):
     context = {
         'match_obj':match_obj,
         'next_match': next_match,
-        'news':news,
     }
     return TemplateResponse(request, "home/matches.html", context)
+
 
 
 def LangView(request):
@@ -49,9 +98,7 @@ def LangView(request):
 
 def LigaDetailView(request, pk):
     liga = get_object_or_404(Liga, pk=pk)
-    news = News.objects.order_by('-id')[:2]
     context = {
-        'news': news,
         'liga': liga,
     }
     return TemplateResponse(request, "home/liga_detail.html", context)
@@ -67,9 +114,9 @@ class DetailView(HitCountDetailView):
         random_article = random.choice(articles)
         article = get_object_or_404(News, pk=self.kwargs.get('pk'))
         form = CommentForm()
-
         context['article'] = article
         context['random_article'] = random_article
+        context['form'] = form
         return context
 
 def add_comment(request, pk):
@@ -88,9 +135,7 @@ def add_comment(request, pk):
 
 def PlayerView(request):
     player = Player.objects.all()
-    news = News.objects.order_by('-id')[:2]
     context = {
-        'news': news,
         'players':player
     }
     return TemplateResponse(request, "home/players.html", context)

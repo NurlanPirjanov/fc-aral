@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %}{{ object.title }} | Aral PFC{% endblock title %}
+{% block content %}
+    {% if contact.image %}
+        <div class="hero overlay" style="background-image: url('{{ contact.image.url }}');">
+    {% else %}
+        <div class="hero overlay" style="background-image: url('/static/images/bg_1.jpg');">
+    {% endif %}
+<div class="container">
+    <div class="row align-items-center">
+        <div class="col-lg-5 mx-auto text-center">
+            <h1 class="text-white">{{ object.title }}</h1>
+        </div>
+    </div>
+</div>
+</div>
+<div class="site-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-6 title-section">
+                <h2 class="heading">{{ object.title }}</h2>
+            </div>
+        </div>
+        <p>{{ object.body|safe }}</p>
+    </div>
+</div>
+
+{% include 'home/components/news.html' %}
+{% endblock content %}

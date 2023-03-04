@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %}{% trans "Matches" %} | Aral PFC{% endblock title %}
+{% block content %}
+    {% if contact.image %}
+        <div class="hero overlay" style="background-image: url('{{ contact.image.url }}');">
+    {% else %}
+        <div class="hero overlay" style="background-image: url('/static/images/bg_1.jpg');">
+    {% endif %}
+<div class="container">
+    <div class="row align-items-center">
+        <div class="col-lg-5 mx-auto text-center">
+            <h1 class="text-white">Rahbariyat</h1>
+        </div>
+    </div>
+</div>
+</div>
+<div class="site-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-6 title-section">
+                <h2 class="heading">Rahbariyat</h2>
+            </div>
+        </div>
+        <section class="player-list">
+            <ul class="listing ">
+                {% for i in rahb %}
+                    <li class="listing__item"><div class="player-card">
+                        <div class="player-card__number">{{ i.number_player }}</div>
+                        <div class="player-card__details">
+                            <div class="player-card___name">
+                                <div class="player-card__first-name">{{ i.full_name }}</div>
+                            </div>
+                            <div class="player-card__position">
+                                <div class="player-card__position-general">{{ i.role }}</div>
+                            </div>
+                        </div>
+                        <div class="player-card__image">
+                            <div class="responsive-image responsive-image--transparent">
+                                <div class="responsive-image__preload-ref">
+                                    <img src="{{ i.image.url }}" alt="{{ i.full_name }}" class="blur-up image-is-loaded ls-is-cached lazyloaded">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </div>
+</div>
+
+{% include 'home/components/news.html' %}
+{% endblock content %}

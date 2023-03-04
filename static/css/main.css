@@ -360,3 +360,36 @@ a:hover {
     left: 20px;
     font-size: 27px;
 }
+
+
+.card-wrapper {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30ch, 1fr));
+    gap: 10px;
+}
+
+.card2 {
+    background-color: #0c5460;
+    border-radius: 7px;
+}
+.card-wrapper > .card h3 {
+    margin-top: 1rem;
+    font-size: 1.25rem;
+}
+
+.card2 > img {
+    width: 100%;
+    object-fit: cover;
+    max-height: max(10rem, 30vh);
+    aspect-ratio: 4/3;
+    border-radius: 7px;
+}
+
+.card2 > img ~ * {
+    margin-left: 1rem;
+    margin-right: 1rem;
+
+}

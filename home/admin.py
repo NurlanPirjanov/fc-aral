@@ -10,7 +10,18 @@ class MyModelAdmin(admin.ModelAdmin):
             return True
     # def has_delete_permission(self, request, obj=None):
     #     return False
-
+class LimHistoryAdd(admin.ModelAdmin):
+    def has_add_permission(self, request):
+        if ClubHistory.objects.all().count() >= 1:
+            return False
+        else:
+            return True
+class LimStadionAdd(admin.ModelAdmin):
+    def has_add_permission(self, request):
+        if Stadion.objects.all().count() >= 1:
+            return False
+        else:
+            return True
 class LigaInLine(admin.TabularInline):
     model = LigaStat
     extra = 0
@@ -39,3 +50,8 @@ admin.site.register(Player)
 admin.site.register(Trener)
 admin.site.register(Gallery)
 admin.site.register(LogoFc)
+admin.site.register(Rahbariyat)
+admin.site.register(ClubHistory,LimHistoryAdd)
+admin.site.register(Stadion,LimStadionAdd)
+admin.site.register(U19)
+admin.site.register(Category)

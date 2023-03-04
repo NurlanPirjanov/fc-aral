@@ -16,7 +16,6 @@
                         <li class="{% if request.resolver_match.view_name == 'HomePage' %}active{% endif %}"><a href="{% url "HomePage" %}" class="nav-link link">{% trans "Home" %}</a></li>
                         <li class="{% if request.resolver_match.view_name == 'MatchPage' %}active{% endif %}"><a href="{% url "MatchPage" %}" class="nav-link link">{% trans "Matches" %}</a></li>
                         <li class="{% if request.resolver_match.view_name == 'NewsPage' %}active{% endif %}"><a href="{% url "NewsPage" %}" class="nav-link">{% trans "News" %}</a></li>
-                        <li class="{% if request.resolver_match.view_name == 'ContactPage' %}active{% endif %}"><a href="{% url "ContactPage" %}" class="nav-link">{% trans "Contact" %}</a></li>
                         <li>
                             <div class="dropdown" data-dropdown>
                                 <button class="link" data-dropdown-buttom>Klub</button>
@@ -24,16 +23,18 @@
                                     <div>
                                         <div class="dropdown-links">
                                             <a href="{% url "PlayersPage" %}" class="link">{% trans "Players" %}</a>
-                                            <a href="#" class="link">Rahbariyat</a>
-                                            <a href="#" class="link">Trenerler</a>
-                                            <a href="#" class="link">U-19</a>
-                                            <a href="#" class="link">Klub tariyxı</a>
-                                            <a href="#" class="link">Stadion</a>
+                                            <a href="{% url "rahbariyat" %}" class="link">Rahbariyat</a>
+                                            <a href="{% url "trener" %}" class="link">Trenerler</a>
+                                            <a href="{% url "U19" %}" class="link">U-19</a>
+                                            <a href="{% url "history" %}" class="link">Klub tariyxı</a>
+                                            <a href="{% url "stadion" %}" class="link">Stadion</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </li>
+                        <li class="{% if request.resolver_match.view_name == 'mediateka' %}active{% endif %}"><a href="{% url "mediateka" %}" class="nav-link">{% trans "Media" %}</a></li>
+                        <li class="{% if request.resolver_match.view_name == 'ContactPage' %}active{% endif %}"><a href="{% url "ContactPage" %}" class="nav-link">{% trans "Contact" %}</a></li>
                         <li>
                             <div class="dropdown" data-dropdown>
                                 <button class="link button-lang" data-dropdown-buttom></button>

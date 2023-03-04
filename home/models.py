@@ -124,14 +124,14 @@ class Player(models.Model):
 class Trener(models.Model):
     """Trenerler maǵlıwmatı"""
     full_name = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='image/player/')
-    desk = models.TextField(verbose_name="Maǵlıwmat", null=True)
-
+    image = models.ImageField(upload_to='image/trener/')
+    role = models.CharField(max_length=100, verbose_name="Lavozm", default=" ")
+    full_information = RichTextUploadingField(default=" ")
     def __str__(self):
         return f'{self.full_name}'
 
     class Meta:
-        verbose_name = "Trener"
+        verbose_name = "Trener "
         verbose_name_plural = "Trenerler"
 
 
@@ -211,8 +211,45 @@ class Rahbariyat(models.Model):
     full_name = models.CharField(max_length=150, verbose_name="Tolıq atı")
     image = models.ImageField(verbose_name='Súwret', upload_to='image/rahbariyat/')
     role = models.CharField(max_length=100, verbose_name="Lavozm")
-    full_information = RichTextUploadingField()
+    full_information = RichTextUploadingField(default=" ")
 
+    def __str__(self):
+        return self.full_name
     class Meta:
         verbose_name = "Rahbar "
         verbose_name_plural = "Rahbariyatlar"
+
+
+class U19(models.Model):
+    title = models.CharField(max_length=100, verbose_name="Atama")
+    body = RichTextUploadingField(default="Text")
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "U19"
+        verbose_name_plural = "U19"
+
+class ClubHistory(models.Model):
+    title = models.CharField(default="PFC ARAL", max_length=150, verbose_name="Atama")
+    body = RichTextUploadingField(default="Text")
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "Klub tariyxı"
+        verbose_name_plural = "Klub tariyxı"
+
+
+class Stadion(models.Model):
+    title = models.CharField(default="PFC ARAL", max_length=150, verbose_name="Atama")
+    body = RichTextUploadingField(default="Text")
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "Stadion"
+        verbose_name_plural = "Stadionlar"

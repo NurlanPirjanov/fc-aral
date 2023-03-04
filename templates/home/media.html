@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %}{{ object.title }} | Aral PFC{% endblock title %}
+{% block content %}
+    {% if contact.image %}
+        <div class="hero overlay" style="background-image: url('{{ contact.image.url }}');">
+    {% else %}
+        <div class="hero overlay" style="background-image: url('/static/images/bg_1.jpg');">
+    {% endif %}
+<div class="container">
+    <div class="row align-items-center">
+        <div class="col-lg-5 mx-auto text-center">
+            <h1 class="text-white">Media</h1>
+        </div>
+    </div>
+</div>
+</div>
+<div class="site-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-6 title-section">
+                <h2 class="heading">Gallery</h2>
+            </div>
+        </div>
+        <ul class="card-wrapper">
+            {% for i in news_obj %}
+                <li class="card2">
+                    <img src="{{ i.image.url }}" alt="{{ i.title }}">
+                    <p>{{ i.title }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-lg-7 text-center">
+            <div class="custom-pagination">
+                {% if news_obj.has_other_pages %}
+                    <div class="pagination">
+                        {% if news_obj.has_previous %}
+                            <a href="?page={{ news_obj.previous_page_number }}">previous</a>
+                        {% endif %}
+
+                        <span class="current-page">{{ news_obj.number }}</span>
+
+                        {% if news_obj.has_next %}
+                            <a href="?page={{ news_obj.next_page_number }}">next</a>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'home/components/news.html' %}
+{% endblock content %}

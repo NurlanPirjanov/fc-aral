@@ -1,19 +1,27 @@
+{% load i18n %}
 <footer class="footer-section">
     <div class="container">
         <div class="row">
             <div class="col-lg-3">
                 <div class="widget mb-3">
-                    <h3>News</h3>
+                    <h3>Contact</h3>
                     <ul class="list-unstyled links">
-                        <li><a href="#">All</a></li>
+                        <li>Address: {{ contact.address }}</li>
+                        <li>Email: <a href="mailto:{{ contact.email }}">{{ contact.email }}</a></li>
+                        <li>Phone: <a href="tel:{{ contact.phone_number }}">{{ contact.phone_number }}</a></li>
                     </ul>
                 </div>
             </div>
             <div class="col-lg-3">
                 <div class="widget mb-3">
-                    <h3>Tickets</h3>
+                    <h3>Club</h3>
                     <ul class="list-unstyled links">
-                        <li><a href="#">Online Ticket</a></li>
+                        <li><a href="{% url "PlayersPage" %}" class="link">{% trans "Players" %}</a></li>
+                        <li><a href="{% url "rahbariyat" %}" class="link">Rahbariyat</a></li>
+                        <li><a href="{% url "trener" %}" class="link">Trenerler</a></li>
+                        <li><a href="{% url "U19" %}" class="link">U-19</a></li>
+                        <li><a href="{% url "history" %}" class="link">Klub tariyxı</a></li>
+                        <li><a href="{% url "stadion" %}" class="link">Stadion</a></li>
                     </ul>
                 </div>
             </div>
@@ -30,19 +38,19 @@
                     <h3>Social</h3>
                     <ul class="list-unstyled links">
                         {% if contact.telegram %}
-                            <li><a href="{{ contact.telegram }}">Telegram</a></li>
+                            <li><i class="fab fa-telegram"></i> <a href="{{ contact.telegram }}">Telegram</a></li>
                         {% endif %}
                         {% if contact.instagram %}
-                            <li><a href="{{ contact.instagram }}">Instagram</a></li>
+                            <li><i class="fab fa-instagram"></i> <a href="{{ contact.instagram }}">Instagram</a></li>
                         {% endif %}
                         {% if contact.facebook %}
-                            <li><a href="{{ contact.facebook }}">Facebook</a></li>
+                            <li><i class="fab fa-facebook"></i> <a href="{{ contact.facebook }}">Facebook</a></li>
                         {% endif %}
                         {% if contact.twitter %}
-                            <li><a href="{{ contact.twitter }}">Twitter</a></li>
+                            <li><i class="fab fa-twitter"></i> <a href="{{ contact.twitter }}">Twitter</a></li>
                         {% endif %}
                         {% if contact.youtube %}
-                            <li><a href="{{ contact.youtube }}">Youtube</a></li>
+                            <li><i class="fab fa-youtube"></i><a href="{{ contact.youtube }}">Youtube</a></li>
                         {% endif %}
                     </ul>
                 </div>
