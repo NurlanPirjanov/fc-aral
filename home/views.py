@@ -16,13 +16,11 @@ def home(request):
     next_match = NextMatch.objects.last()
     news = News.objects.order_by('-id')[:3]
     liga = Liga.objects.latest('id')
-    liga_stat = LigaStat.objects.filter(liga=liga.id)
     gallery = Gallery.objects.order_by('-id')[:6]
     context = {
         'next_match': next_match,
         'news': news,
         'liga': liga,
-        'liga_stat': liga_stat,
         'gallery':gallery,
     }
     return TemplateResponse(request, "home/index.html", context)

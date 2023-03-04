@@ -115,17 +115,23 @@
                             <tr>
                                 <th>P</th>
                                 <th>{{ liga.name }}</th>
-                                <th>Match</th>
-                                <th>Score</th>
+                                <th>Pl</th>
+                                <th>Pts</th>
+                                <th>W</th>
+                                <th>D</th>
+                                <th>L</th>
                             </tr>
                             </thead>
                             <tbody>
-                            {% for i in liga_stat %}
+                            {% for i in liga.ligateam.all|dictsortreversed:"points" %}
                                 <tr>
                                     <td>{{ forloop.counter }}</td>
                                     <td><strong class="text-white">{{ i.kamanda }}</strong></td>
-                                    <td>{{ i.match }}</td>
-                                    <td>{{ i.score }}</td>
+                                    <td>{{ i.played }}</td>
+                                    <td>{{ i.points }}</td>
+                                    <td>{{ i.won }}</td>
+                                    <td>{{ i.drawn }}</td>
+                                    <td>{{ i.lost }}</td>
                                 </tr>
                             {% endfor %}
                             </tbody>

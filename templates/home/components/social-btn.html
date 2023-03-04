@@ -1,5 +1,19 @@
-<a class="btn btn-icon btn-facebook" href="#"><i class="fa fa-facebook"></i><span>Facebook</span></a>
-<a class="btn btn-icon btn-twitter" href="#"><i class="fa fa-twitter"></i><span>Twitter</span></a>
-<a class="btn btn-icon btn-googleplus" href="#"><i class="fa fa-google-plus"></i><span>Google+</span></a>
-<a class="btn btn-icon btn-pinterest" href="#"><i class="fa fa-pinterest"></i><span>Pinterest</span></a>
-<a class="btn btn-icon btn-linkedin" href="#"><i class="fa fa-linkedin"></i><span>LinkedIn</span></a>
+<div class="social-btn">
+    <div class="social-links">
+        {% if contact.facebook %}
+            <div style="background: #4267B2;" class="social-items"><a href="{{ contact.facebook }}"><i class="fab fa-facebook-f"></i></a></div>
+        {% endif %}
+        {% if contact.twitter %}
+            <div style="background: #1DA1F2;" class="social-items"><a href="{{contact.twitter}}"><i class="fab fa-twitter"></i></a></div>
+        {% endif %}
+        {% if contact.instagram %}
+            <div style="background: #E1306C;" class="social-items"><a href="{{contact.instagram}}"><i class="fab fa-instagram"></i></a></div>
+        {% endif %}
+        {% if contact.youtube %}
+            <div style="background: #ff0000;" class="social-items"><a href="{{contact.youtube}}"><i class="fab fa-youtube"></i></a></div>
+        {% endif %}
+        {% if contact.telegram %}
+            <div style="background: #0088cc;" class="social-items"><a href="{{contact.telegram}}"><i class="fab fa-telegram"></i></a></div>
+        {% endif %}
+    </div>
+</div>

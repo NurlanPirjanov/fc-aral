@@ -88,11 +88,14 @@ class LigaStat(models.Model):
     """Liga statistikası"""
     liga = models.ForeignKey(Liga, on_delete=models.CASCADE, related_name='ligateam')
     kamanda = models.CharField(max_length=100, verbose_name='Kamanda')
-    match = models.IntegerField(verbose_name='oyın')
-    score = models.IntegerField(verbose_name='ochko')
+    played = models.IntegerField(default=0, verbose_name='Played')
+    points = models.FloatField(default=0, verbose_name='Points')
+    won = models.IntegerField(default=0, verbose_name='Won')
+    drawn = models.IntegerField(default=0, verbose_name='Drawn')
+    lost = models.IntegerField(default=0, verbose_name='Lost')
 
     def __str__(self):
-        return f'{self.kamanda} - {self.kamanda}'
+        return f'{self.kamanda} - {self.points}'
 
     class Meta:
         verbose_name = "Liga kamanda"
@@ -178,6 +181,9 @@ class Contact(models.Model):
     location = models.TextField(default="openstreetmap.org", verbose_name="Laylasıw ornı")
     telegram = models.URLField(default="https://t.me/Nurlan_Pirjanov", verbose_name="Telegram kanal", null=True, blank=True)
     instagram = models.URLField(default="https://www.instagram.com/pfkaral_official/", verbose_name="Instagram kanal", null=True, blank=True)
+    facebook = models.URLField(verbose_name="Facebook kanal", null=True, blank=True)
+    youtube = models.URLField(verbose_name="Youtube kanal", null=True, blank=True)
+    twitter = models.URLField(verbose_name="Twitter kanal", null=True, blank=True)
 
 
     def __str__(self):
@@ -191,7 +197,7 @@ class Contact(models.Model):
 class Gallery(models.Model):
     """Súwretler"""
     title = models.CharField(max_length=250, verbose_name='Sipatlama')
-    image = models.ImageField(verbose_name='Súwret')
+    image = models.ImageField(verbose_name='Súwret', upload_to='image/gallery/')
 
     def __str__(self):
         return self.title
@@ -199,3 +205,14 @@ class Gallery(models.Model):
     class Meta:
         verbose_name = 'Súwret'
         verbose_name_plural = 'Súwretler'
+
+
+class Rahbariyat(models.Model):
+    full_name = models.CharField(max_length=150, verbose_name="Tolıq atı")
+    image = models.ImageField(verbose_name='Súwret', upload_to='image/rahbariyat/')
+    role = models.CharField(max_length=100, verbose_name="Lavozm")
+    full_information = RichTextUploadingField()
+
+    class Meta:
+        verbose_name = "Rahbar "
+        verbose_name_plural = "Rahbariyatlar"
