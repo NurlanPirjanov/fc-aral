@@ -88,7 +88,12 @@ def MatchView(request):
     }
     return TemplateResponse(request, "home/matches.html", context)
 
-
+def MatchDetailView(request, pk):
+    old_matches = get_object_or_404(OldMatch, pk=pk)
+    context = {
+        'object': old_matches,
+    }
+    return TemplateResponse(request, "home/match_detail.html", context)
 
 def LangView(request):
     lang_url = request.GET.get("lang")

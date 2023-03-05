@@ -25,7 +25,7 @@ class OldMatch(models.Model):
     date = models.DateField(verbose_name='Oqın waqtı (sáne)')
     time = models.CharField(max_length=25, verbose_name='Oqın waqtı (saat)', default='15:00 GMT+5')
     active = models.BooleanField(verbose_name='Aktiv', default=True)
-
+    full_info = RichTextUploadingField(verbose_name="Oyın tolıq maǵlıwmat", default=" ")
     def __str__(self):
         return f'{self.kamanda1} vs {self.kamanda2}'
 
@@ -51,25 +51,6 @@ class NextMatch(models.Model):
     class Meta:
         verbose_name = 'Keyingi oyın'
         verbose_name_plural = 'Keyingi oyınlar'
-
-
-class Match(models.Model):
-    """Oyın"""
-    league = models.CharField(max_length=150, verbose_name="Liga atı")
-    kamanda1 = models.CharField(max_length=50, verbose_name="1-kamanda")
-    sk1 = models.IntegerField(verbose_name="Kamanda 1 gollar")
-    kamanda2 = models.CharField(max_length=50, verbose_name="2-kamanda")
-    sk2 = models.IntegerField(verbose_name="Kamanda 2 gollar")
-    date = models.DateField(verbose_name='Oqın waqtı (sáne)')
-    time = models.CharField(max_length=20, verbose_name='Oqın waqtı (saat)', default='15:00 GMT+5')
-    active = models.BooleanField(verbose_name='Aktiv', default=True)
-
-    def __str__(self):
-        return f'{self.kamanda1} vs {self.kamanda2}'
-
-    class Meta:
-        verbose_name = 'Oyın'
-        verbose_name_plural = 'Oyınlar'
 
 
 class Liga(models.Model):

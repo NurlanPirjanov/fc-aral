@@ -240,7 +240,6 @@ a:hover {
 
 .header-container {
     flex-direction: column;
-    min-width: 100vh;
     display: flex;
 }
 

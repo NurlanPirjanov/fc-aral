@@ -95,14 +95,14 @@
                                 <div class="d-flex align-items-center justify-content-around justify-content-between w-100">
                                     <div class="team-1 text-center">
                                         <img src="{{ i.kamanda1_image.img.url}}" alt="Image">
-                                        <h3>Football League</h3>
+                                        <h3>{{ i.kamanda1}}</h3>
                                     </div>
                                     <div>
-                                        <span class="vs"><span>{{ i.sk1 }} - {{ i.sk2 }}</span></span>
+                                        <span class="vs"><span><a href="{% url 'MatchDetailPage' i.pk %}">{{ i.sk1 }} - {{ i.sk2 }}</a></span></span>
                                     </div>
                                     <div class="team-2 text-center">
                                         <img src="{{ i.kamanda2_image.img.url}}" alt="Image">
-                                        <h3>Soccer</h3>
+                                        <h3>{{ i.kamanda2}}</h3>
                                     </div>
                                 </div>
                             </div>
