@@ -42,7 +42,6 @@ class CommentAdmin(admin.ModelAdmin):
 admin.site.register(News, CommentAdmin)
 admin.site.register(Liga, LigaAdmin)
 admin.site.register(Contact, MyModelAdmin)
-admin.site.register(LigaStat)
 admin.site.register(NextMatch)
 admin.site.register(OldMatch)
 admin.site.register(Player)
