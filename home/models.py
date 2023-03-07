@@ -1,7 +1,6 @@
 from django.db import models
 from ckeditor_uploader.fields import RichTextUploadingField
-
-
+from PIL import Image
 class LogoFc(models.Model):
     name = models.CharField(max_length=100, verbose_name="Kamanda atı")
     img = models.ImageField(upload_to='images/logo/', verbose_name='Kamanda logosı')
@@ -16,10 +15,8 @@ class LogoFc(models.Model):
 class OldMatch(models.Model):
     """Bas bet - Aldınǵı oyın"""
     league = models.CharField(max_length=150, verbose_name="Liga atı")
-    kamanda1 = models.CharField(max_length=50, verbose_name="1-kamanda")
     kamanda1_image = models.ForeignKey(LogoFc, on_delete=models.CASCADE, related_name="kam1")
     sk1 = models.IntegerField(verbose_name="1-kamanda gollar")
-    kamanda2 = models.CharField(max_length=50, verbose_name="2-kamanda")
     kamanda2_image = models.ForeignKey(LogoFc, on_delete=models.CASCADE, related_name="kam2")
     sk2 = models.IntegerField(verbose_name="2-kamanda gollar")
     date = models.DateField(verbose_name='Oqın waqtı (sáne)')
@@ -135,9 +132,24 @@ class News(models.Model):
     image2 = models.ImageField(upload_to='image/news/', verbose_name='Súwret', null=True)
     date = models.DateField(auto_now_add=True, verbose_name="Sáne")
     caregory = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='cat', null=True)
+
     def __str__(self):
         return f'{self.title}'
 
+    def save(self, *args, **kwargs):
+        super().save()  # saving image first
+
+        img = Image.open(self.image.path)
+        img2 = Image.open(self.image2.path)
+
+        if img.height > 1280 or img.width > 720:
+            new_img = (1280, 720)
+            img.thumbnail(new_img)
+            img.save(self.image.path)
+        if img2.height > 1280 or img.width > 720:
+            new_img2 = (1280, 720)
+            img2.thumbnail(new_img2)
+            img2.save(self.image2.path)
     class Meta:
         verbose_name = "Jańalıq"
         verbose_name_plural = "Jańalıqlar"

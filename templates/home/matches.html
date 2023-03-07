@@ -25,14 +25,14 @@
                     <span class="score">{{ old_match.sk1 }} - {{ old_match.sk2 }}</span>
                     <div class="team-1 w-50">
                         <div class="team-details w-100 text-center">
-                            <img src="{{ old_match.kamanda1_image.img.url }}" alt="{{ old_match.kamanda1}}" class="img-fluid">
-                            <h3>{{ old_match.kamanda1}}</h3>
+                            <img src="{{ old_match.kamanda1_image.img.url }}" height="100px" alt="{{ old_match.kamanda1_image.name}}">
+                            <h3>{{ old_match.kamanda1_image.name}}</h3>
                         </div>
                     </div>
                     <div class="team-2 w-50">
                         <div class="team-details w-100 text-center">
-                            <img src="{{ old_match.kamanda2_image.img.url }}" alt="{{ old_match.kamanda2}}" class="img-fluid">
-                            <h3>{{ old_match.kamanda1}}</h3>
+                            <img src="{{ old_match.kamanda2_image.img.url }}" height="100px" alt="{{ old_match.kamanda2_image.name}}">
+                            <h3>{{ old_match.kamanda2_image.name}}</h3>
                         </div>
                     </div>
                 </div>
@@ -57,15 +57,15 @@
                             <div class="widget-vs">
                                 <div class="d-flex align-items-center justify-content-around justify-content-between w-100">
                                     <div class="team-1 text-center">
-                                        <img src="{{ next_match.kamanda1_image.img.url }}" alt="{{ next_match.kamanda1 }}">
-                                        <h3>{{ next_match.kamanda1 }}</h3>
+                                        <img src="{{ next_match.kamanda1_image.img.url }}" alt="{{ next_match.kamanda1_image.name }}">
+                                        <h3>{{ next_match.kamanda1_image.name }}</h3>
                                     </div>
                                     <div>
                                         <span class="vs"><span>VS</span></span>
                                     </div>
                                     <div class="team-2 text-center">
-                                        <img src="{{ next_match.kamanda2_image.img.url }}" alt="{{ next_match.kamanda1 }}">
-                                        <h3>{{ next_match.kamanda1 }}</h3>
+                                        <img src="{{ next_match.kamanda2_image.img.url }}" alt="{{ next_match.kamanda2_image.name }}">
+                                        <h3>{{ next_match.kamanda2_image.name }}</h3>
                                     </div>
                                 </div>
                             </div>
@@ -95,14 +95,14 @@
                                 <div class="d-flex align-items-center justify-content-around justify-content-between w-100">
                                     <div class="team-1 text-center">
                                         <img src="{{ i.kamanda1_image.img.url}}" alt="Image">
-                                        <h3>{{ i.kamanda1}}</h3>
+                                        <h3>{{ i.kamanda1_image.name}}</h3>
                                     </div>
                                     <div>
                                         <span class="vs"><span><a href="{% url 'MatchDetailPage' i.pk %}">{{ i.sk1 }} - {{ i.sk2 }}</a></span></span>
                                     </div>
                                     <div class="team-2 text-center">
                                         <img src="{{ i.kamanda2_image.img.url}}" alt="Image">
-                                        <h3>{{ i.kamanda2}}</h3>
+                                        <h3>{{ i.kamanda2_image.name}}</h3>
                                     </div>
                                 </div>
                             </div>
