@@ -24,7 +24,7 @@ class OldMatch(models.Model):
     active = models.BooleanField(verbose_name='Aktiv', default=True)
     full_info = RichTextUploadingField(verbose_name="Oyın tolıq maǵlıwmat", default=" ")
     def __str__(self):
-        return f'{self.kamanda1} vs {self.kamanda2}'
+        return f'{self.kamanda1_image.name} vs {self.kamanda2_image.name}'
 
     class Meta:
         verbose_name = 'Aldınǵı oyın'
