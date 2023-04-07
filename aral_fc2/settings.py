@@ -4,7 +4,7 @@ from django.contrib import staticfiles
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-!0(49*@hfremx0^176nyuzwliw$oah+-23345cluu)@y*of)49'
+SECRET_KEY = '__KEY__'
 
 DEBUG = True
 
