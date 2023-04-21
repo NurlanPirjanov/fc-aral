@@ -14,7 +14,10 @@ from django.views.generic import TemplateView
 from hitcount.views import HitCountDetailView
 def home(request):
     next_match = NextMatch.objects.last()
-    liga = Liga.objects.latest('id')
+    if Liga.objects.all():
+        liga = Liga.objects.latest('id')
+    else:
+        liga = None
     gallery = Gallery.objects.order_by('-id')[:6]
     news3 = News.objects.order_by('-id')[:3]
     context = {
